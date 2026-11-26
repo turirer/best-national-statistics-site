@@ -1,66 +1,265 @@
+/* Nusantara in Numbers — an original, quiet "statistics office" look:
+   deep teal ink, warm amber accent, paper background, system type only. */
+
+:root {
+  --ink: #17303a;
+  --ink-soft: #3c5561;
+  --paper: #faf7f1;
+  --panel: #ffffff;
+  --line: #e3ddd0;
+  --teal: #0f5e63;
+  --teal-dark: #0a4247;
+  --amber: #d98a1f;
+  --amber-soft: #f6e3c4;
+  --red: #b23a2e;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
 body {
-  margin: 0 auto;
-  max-width: 860px;
-  padding: 0 16px 48px;
-  font: 17px/1.55 system-ui, sans-serif;
-  color: #1a1a1a;
-}
-
-header {
-  padding: 16px 0;
-  border-bottom: 1px solid #ddd;
-  font-weight: 600;
-}
-
-header a {
-  color: inherit;
-  text-decoration: none;
-}
-
-a {
-  color: #8a3b12;
-}
-
-.recipes {
-  list-style: none;
-  padding: 0;
-}
-
-.recipes li {
-  display: grid;
-  grid-template-columns: 1fr 5em 6em 12em;
-  gap: 12px;
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
-}
-
-dl {
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  gap: 4px 16px;
-}
-
-dt {
-  font-weight: 600;
-}
-
-dd {
   margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
-li {
-  margin-bottom: 4px;
+a { color: var(--teal); }
+a:hover { color: var(--teal-dark); }
+
+/* ------------------------------------------------------------- header */
+.site-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 22px;
+  padding: 14px clamp(16px, 4vw, 40px);
+  background: var(--teal-dark);
+  color: #fff;
 }
 
-footer {
-  margin-top: 48px;
-  color: #666;
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  letter-spacing: 0.2px;
+}
+.brand:hover { color: #fff; }
+.brand em { font-style: normal; color: var(--amber-soft); }
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: var(--amber);
+  color: #241a05;
+  font-weight: 800;
+  font-size: 19px;
+}
+
+.site-nav { display: flex; flex-wrap: wrap; gap: 4px 6px; margin-left: auto; }
+.site-nav a {
+  color: #dceeed;
+  text-decoration: none;
+  padding: 6px 11px;
+  border-radius: 999px;
+  font-size: 14.5px;
+}
+.site-nav a:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+.site-nav a.on { background: var(--amber); color: #241a05; font-weight: 650; }
+
+/* -------------------------------------------------------------- layout */
+main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 26px clamp(16px, 4vw, 32px) 40px;
+}
+
+.hero { margin-bottom: 22px; }
+.hero h1 {
+  margin: 4px 0 10px;
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.12;
+  letter-spacing: -0.4px;
+}
+.lede { font-size: 17.5px; color: var(--ink-soft); max-width: 68ch; margin: 0; }
+.crumb { margin: 0 0 6px; font-size: 14px; }
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px clamp(16px, 3vw, 28px);
+  margin: 18px 0;
+}
+.panel h2 { margin: 0 0 10px; font-size: 21px; }
+.panel p { max-width: 72ch; }
+.source { font-size: 13px; color: var(--ink-soft); margin: 10px 0 0; }
+.more { font-weight: 650; }
+
+/* --------------------------------------------------------------- cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 18px 0;
+}
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--teal);
+  border-radius: var(--radius);
+  padding: 14px 16px 12px;
+}
+.card-label {
+  margin: 0;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.card-value { margin: 6px 0 4px; font-size: 26px; font-weight: 750; color: var(--teal-dark); }
+.card-note { margin: 0; font-size: 14px; color: var(--ink-soft); }
+.card-year { margin: 10px 0 0; font-size: 12.5px; color: var(--amber); font-weight: 650; }
+
+/* -------------------------------------------------------------- toggles */
+.toggles { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 14px; }
+.toggle {
+  font: inherit;
   font-size: 14px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1.5px solid var(--teal);
+  background: #fff;
+  color: var(--teal-dark);
+  cursor: pointer;
+}
+.toggle:hover { background: #e8f2f1; }
+.toggle.on { background: var(--teal); color: #fff; font-weight: 650; }
+
+/* --------------------------------------------------------------- charts */
+.chart { width: 100%; height: auto; display: block; margin: 8px 0 4px; }
+.chart-grid { stroke: var(--line); stroke-width: 1; }
+.chart-zero { stroke: #9db3ba; stroke-width: 1.2; }
+.chart-line { fill: none; stroke: var(--teal); stroke-width: 2.6; stroke-linejoin: round; stroke-linecap: round; }
+.chart-dot { fill: var(--amber); stroke: #fff; stroke-width: 1.4; }
+.chart-bar { fill: var(--teal); }
+.chart-bar.neg { fill: var(--red); }
+.chart-tick { font-size: 11.5px; fill: var(--ink-soft); }
+.chart-val { font-size: 11.5px; font-weight: 650; fill: var(--ink); }
+.chart-unit { font-size: 12px; font-weight: 700; fill: var(--ink-soft); }
+
+.sharebar {
+  height: 18px;
+  border-radius: 9px;
+  background: var(--amber-soft);
+  overflow: hidden;
+  margin: 12px 0 6px;
+}
+.sharebar-fill { display: block; height: 100%; background: var(--teal); }
+.sharebar-labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13.5px;
+  color: var(--ink-soft);
 }
 
-@media (max-width: 600px) {
-  .recipes li {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
+/* -------------------------------------------------------- province table */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 12px 20px;
+  margin-bottom: 14px;
+}
+.controls label { display: grid; gap: 5px; font-size: 13.5px; font-weight: 650; color: var(--ink-soft); }
+.controls input, .controls select {
+  font: inherit;
+  font-size: 15px;
+  padding: 8px 11px;
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  min-width: 200px;
+}
+.controls .count { margin: 0 0 8px auto; font-size: 13.5px; color: var(--ink-soft); }
+
+.tablewrap { overflow-x: auto; }
+table.data { width: 100%; border-collapse: collapse; font-size: 15px; }
+table.data th, table.data td {
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  white-space: nowrap;
+}
+table.data td.num, table.data th.num { text-align: right; }
+table.data tbody tr:hover { background: #f3efe4; }
+table.data th { font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--ink-soft); }
+button.sort {
+  font: inherit;
+  font-size: inherit;
+  font-weight: 700;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+button.sort:hover { color: var(--teal-dark); text-decoration: underline; }
+.facts-table th { text-transform: none; letter-spacing: 0; font-size: 15px; color: var(--ink); white-space: normal; }
+.facts-table td { white-space: normal; }
+
+/* ------------------------------------------------------------ link grid */
+.linkgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+.linkgrid a {
+  display: grid;
+  gap: 3px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  text-decoration: none;
+  color: var(--ink);
+}
+.linkgrid a:hover { border-color: var(--teal); }
+.linkgrid strong { color: var(--teal-dark); font-size: 16.5px; }
+.linkgrid span { font-size: 13.5px; color: var(--ink-soft); }
+
+.facts { margin: 8px 0; padding-left: 20px; }
+.facts li { margin: 7px 0; max-width: 74ch; }
+
+/* --------------------------------------------------------------- footer */
+.site-foot {
+  border-top: 1px solid var(--line);
+  padding: 22px clamp(16px, 4vw, 40px) 34px;
+  color: var(--ink-soft);
+  font-size: 14px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.site-foot p { margin: 4px 0; max-width: 76ch; }
+
+/* ---------------------------------------------------------------- phone */
+@media (max-width: 620px) {
+  .site-nav { margin-left: 0; }
+  .cards { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  .card-value { font-size: 22px; }
+  .controls input, .controls select { min-width: 0; width: 100%; }
+  .controls label { flex: 1 1 100%; }
+  .controls .count { margin-left: 0; }
+  table.data { font-size: 13.5px; }
+  table.data th, table.data td { padding: 7px 7px; }
 }
